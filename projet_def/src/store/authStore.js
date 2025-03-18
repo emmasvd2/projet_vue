@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword 
 } from "firebase/auth";
-import { ref, onMounted } from "vue";
+import { ref, onMounted } from "vue"; 
 
 export const useAuthStore = defineStore("auth", () => {
   const user = ref(null);
