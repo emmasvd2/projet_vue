@@ -4,7 +4,7 @@
 
 VueMovies est une application web développée avec Vue.js et Pinia qui permet aux utilisateurs de :
 
-- Rechercher des films via l'API OMDB.
+- Rechercher des films via l'API OMDB, avec un filtre par lettres si souhaité.
 - Ajouter des films à une liste "À regarder plus tard".
 - Gérer l'authentification avec Firebase (inscription, connexion, déconnexion).
 - Protéger certaines pages pour les utilisateurs authentifiés (ex: page de compte).
