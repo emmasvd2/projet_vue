@@ -102,9 +102,9 @@ Ouvrir http://localhost:5173 (ou autre port indiqué par Vite).
   - Ajout d’un onglet "📂 Mes listes" où l’utilisateur crée des catégories personnalisées.
     Exemple :
 
-          - Films de Noël
-          - Films d’action
-          - Drames émouvants
+      - Films de Noël
+      - Films d’action
+      - Drames émouvants
 
 <br>
 <br>
