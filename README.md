@@ -14,7 +14,7 @@ VueMovies est une application web développée avec Vue.js et Pinia qui permet a
 
 - **Recherche de films** : Recherche dynamique via l'API OMDB avec gestion des erreurs.
 - **Carrousel de films populaires** : Affichage de films vedettes avec défilement automatique.
-- **Ajout à la watchlist** : Possibilité d'ajouter des films à une liste "À regarder plus tard" (stockée en `localStorage`).
+- **Ajout à la watchlist** : Possibilité d'ajouter des films à une liste "À regarder plus tard" (stockée en `localStorage`) seulement si l'utilisateur est connecté.
 - **Authentification Firebase** :
 - Inscription et connexion via Firebase Authentication.
 - Gestion de l’état utilisateur avec Pinia.
@@ -23,59 +23,57 @@ VueMovies est une application web développée avec Vue.js et Pinia qui permet a
 - Interface fluide et moderne en Vue.js avec SCSS.
 - Animation de confirmation lors de l'ajout à la watchlist.
 - Filtrage des films par lettre pour une navigation plus rapide.
+- **La Navbar** : Le logo sert de menu Home quand on clique dessus. De plus, il y a le bouton pour `se connecter`. Lorsque vous êtes connecté, vous avez le bouton `Mon compte` qui apparaît. Dessus vous y retrouvez votre mail, la liste de films à enregistrer plus tard et le bouton de deconnexion du compte.
 
 ## Difficultés rencontrées et solutions apportées
 
 ### 1️. **Problème d'importation de Firebase**
 
-- **Erreur** : "Export 'auth' is not defined in module".
-- **Solution** : Vérification et correction de l'import dans `firebase.js` (`export { auth };`).
+- **Erreur** : Une erreur revenait lors de la mise en place de firebase : "Export 'auth' is not defined in module".
+- **Solution** : Il s'agissait d'une erreur d'inattention. J'ai alors vérifié et corrigé l'import dans `firebase.js` (`export { auth };`).
 
 ### 2️. **Affichage des films en double**
 
-- **Erreur** : Lors de l'affichage des films, certaines lettres du filtre apparaissaient plusieurs fois.
-- **Solution** : Vérification avec `if (!availableLetters.value.includes(letter))` avant d'ajouter une lettre.
+- **Erreur** : Lors de l'affichage des films, certaines lettres du filtre apparaissaient plusieurs fois en double.
+- **Solution** : J'ai alors vérifié cela avec `if (!availableLetters.value.includes(letter))` avant d'ajouter une lettre.
 
 ### 3️. **Données non mises à jour en temps réel dans la watchlist**
 
-- **Erreur** : Lors de la suppression d'un film, l'interface ne se mettait pas à jour immédiatement.
-- **Solution** : Utilisation de `computed()` et de `watchEffect()` pour rendre les mises à jour réactives.
+- **Erreur** : Lors de la suppression d'un film, l'interface ne se mettait pas à jour immédiatement et l'on voyait encore le film qui était normalement supprimé de la liste.
+- **Solution** : J'ai donc utilisé `computed()` et `watchEffect()` pour rendre les mises à jour réactives.
 
 ### 4️. **Redirection après déconnexion**
 
 - **Erreur** : Après une déconnexion, l'utilisateur restait sur la page `/account` alors qu'il ne devait plus y avoir accès.
-- **Solution** : Ajout d'une redirection vers `/signup` après `authStore.logout()`.
+- **Solution** : Pour corriger cela, j'ai ajouté une redirection vers `/signup` après `authStore.logout()`.
 
 ## Installation et exécution
 
 ### Prérequis
 
 - Node.js installé (`node -v` pour vérifier).
-- Un compte Firebase avec l’authentification email/mot de passe activée.
 
 ### Installation
 
-1. **Cloner le projet**
+1. **Dézipper le projet**
+2. **Ouvrir le projet avec son IDE (VS Code par exemple)**
+3. **Installer les dépendances**
    ```bash
-   git clone https://github.com/ton-projet/vue-movies.git
-   cd vue-movies
+   npm install pinia firebase axios vue3carousel
    ```
-2. **Installer les dépendances**
+4. **Naviguer dans le dossier du projet**
 
 ```bash
+cd projet_def
+```
 
+5. **Installer les dépedances du projet**
+
+```bash
 npm install
 ```
 
-### Configurer Firebase
-
-1. **Créer un fichier firebase.js avec ta configuration Firebase.**
-
-2. **Activer l'authentification Firebase via email/mot de passe.**
-
 ### Lancer l’application
-
-Démarrer le serveur de développement
 
 ```bash
 npm run dev
@@ -85,12 +83,29 @@ npm run dev
 
 Ouvrir http://localhost:5173 (ou autre port indiqué par Vite).
 
+### Compte utilisateur de test
+
+- identifiant : test@test.com
+- mdp : test0000
+
 ## Améliorations possibles :
 
 - Ajouter un backend pour stocker les watchlists en base de données.
-- Ajouter un mode sombre et une meilleure gestion des erreurs API.
-- Tester l’application avec Jest pour améliorer la robustesse.
+- Ajout d’un mode sombre :
+  Un toggle "Mode Sombre / Mode Clair" permet de basculer entre les deux. Stocker le mode en localStorage.
+- Ajout de filtres avancés :
+  - Filtre par genre (action, comédie...)
+  - Filtre par année
+  - Filtre par note IMDB
+- Ajout d’une fonctionnalité "📌 Listes Personnalisées"
+
+  - Ajout d’un onglet "📂 Mes listes" où l’utilisateur crée des catégories personnalisées.
+    Exemple :
+
+          - Films de Noël
+          - Films d’action
+          - Drames émouvants
 
 <br>
 <br>
-Développé avec Vue.js, Pinia, Vue Router et Firebase.
+Développé avec Vue.js, Pinia, Vue Router et Firebase par Emma Stievenard.
