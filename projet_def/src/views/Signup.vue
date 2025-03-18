@@ -72,7 +72,7 @@ export default {
         }
       }
 
-      // ❌ Bloque la redirection si l'authentification a échoué
+      // Bloque la redirection si l'authentification a échoué
       if (!success) {
         console.warn("🚫 Connexion/inscription échouée. Redirection annulée.");
         return;

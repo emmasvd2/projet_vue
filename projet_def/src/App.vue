@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- 📌 Barre de navigation -->
+    <!-- Barre de navigation -->
     <Navbar />
 
-    <!-- 🏠 Contenu principal (affichage des pages) -->
+    <!-- Contenu principal (affichage des pages) -->
     <main>
       <router-view />
     </main>
@@ -41,7 +41,7 @@ main {
   display: block;
   text-align: left;
   padding: 20px;
-  min-height: 80vh; /* ✅ Évite que le contenu soit trop collé en haut */
+  min-height: 80vh; 
 }
 
 

@@ -108,11 +108,11 @@ export const useAuthStore = defineStore("auth", () => {
         return false;
       }
 
-      return true; // ✅ Connexion réussie
+      return true; // Connexion réussie
     } catch (error) {
       console.error("❌ Erreur de connexion :", error);
       errorMessage.value = getErrorMessage(error.code);
-      return false; // ❌ Empêche la redirection si l'authentification échoue
+      return false; // Empêche la redirection si l'authentification échoue
     }
   };
 
